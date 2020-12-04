@@ -75,7 +75,7 @@ jobs:
 
   release:
     needs: [test-codepropertygraph, test-fuzzypp-linux, test-fuzzypp-windows]
-    if: ${{ github.event.issue.push }}
+    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
