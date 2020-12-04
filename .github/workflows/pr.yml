@@ -1,8 +1,6 @@
 name: CI pipeline
 
 on:
-  push:
-    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -75,7 +73,6 @@ jobs:
 
   release:
     needs: [test-codepropertygraph, test-fuzzypp-linux, test-fuzzypp-windows]
-    if: github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
